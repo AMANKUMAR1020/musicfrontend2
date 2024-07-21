@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const client = axios.create({
-		baseURL: 'https://musicbackend2.vercel.app/',
+		baseURL: 'https://musicbackend2.vercel.app/api',
 	//   baseURL:	'https://musicbackend-jet.vercel.app/api',
 	// baseURL: "http://localhost:3500/api",
 	// baseURL: 'https://musicbackend-jet.vercel.app/api',
