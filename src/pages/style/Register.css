@@ -1,0 +1,43 @@
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 10px;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+  }
+  
+  .error {
+    color: red;
+    margin-top: 10px;
+  }
+  
+  .button {    
+    padding: 0px 15px;
+    background-color: #e1ff00;
+    color: #62635f;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: #eaeef3;
+    color: #e1ff00;
+  }
+  
