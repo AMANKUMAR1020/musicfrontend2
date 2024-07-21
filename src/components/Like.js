@@ -1,8 +1,8 @@
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { client } from "../api";
-import { CiHeart } from "react-icons/ci";
-import { FaHeart } from "react-icons/fa";
+// import { CiHeart } from "react-icons/ci";
+// import { FaHeart } from "react-icons/fa";
 //import '../pages/style/ArtisteSong.css'
 import '../pages/style/HomePage.css'
 

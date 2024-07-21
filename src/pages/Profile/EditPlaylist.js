@@ -122,7 +122,7 @@ const EditPlaylist = () => {
   useEffect(() => {
     fetchPlaylist();
     fetchSongs();
-  }, []);
+  }, [ ]);
 
   if (error) {
     return (

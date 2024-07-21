@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { AiOutlineLoading } from "react-icons/ai";
+//import { AiOutlineLoading } from "react-icons/ai";
 import { client } from "../api";
 //import '../style/Profile.css'
 import ClipLoader from "react-spinners/ClipLoader";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, Outlet, useLocation } from "react-router-dom";
-import { logoutUser } from "../redux/slices/userSlice";
-import { resetPlayer,setCurrentTrack,setPlaying } from "../redux/slices/playerSlice";
+import { useDispatch } from "react-redux";
+import { Link, Outlet } from "react-router-dom";
+//import { logoutUser } from "../redux/slices/userSlice";
+import { resetPlayer } from "../redux/slices/playerSlice";
 
 import './style/HomePage.css'
 import MyNavbar from "./MyNavbar";
@@ -20,9 +20,6 @@ const ArtistesPage = () => {
 	const [artistes, setArtistes] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(false);
-	const { user, token } = useSelector((state) => state.user);
-	const navigate = useNavigate();
-	const location = useLocation();
 	const dispatch = useDispatch();
   
 

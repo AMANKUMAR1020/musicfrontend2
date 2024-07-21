@@ -18,7 +18,7 @@ const CreatePlaylist = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
-  const [successMsg, setSuccessMsg] = useState("");
+  const [successMsg, setSuccessMsg] = useState(" ");
 
   const { token } = useSelector((state) => state.user);
   const navigate = useNavigate();
@@ -91,11 +91,12 @@ const CreatePlaylist = () => {
       }).then((res) => {
         console.log("songsIds", res.data);
       });
-      successMsg(" :) you create playlist successFully")
+      setSuccessMsg(" :) you create playlist successFully")
 
     } catch (error) {
       setError(true);
       setErrorMsg(error);
+      
     }  
     setLoading(false);
   };

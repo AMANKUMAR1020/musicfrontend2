@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { client } from "../../api";
 import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";

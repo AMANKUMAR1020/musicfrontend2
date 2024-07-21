@@ -1,16 +1,16 @@
 import { setCurrentTrack,resetPlayer, setTrackList, playTrack, setPlaying } from '../../redux/slices/playerSlice';
 import { MusicPlayer } from "../../components/MusicPlayer";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import ArtisteSong from "../../components/ArtisteSong";
-import { AiOutlineLoading } from "react-icons/ai";
+//import { AiOutlineLoading } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from 'react';
 import { client } from "../../api";
-import SongList from "../SongList";
+//import SongList from "../SongList";
 //import '../style/Profile.css'
 
 import { storage } from '../../firebase';
-import { ref, getDownloadURL, uploadBytesResumable, deleteObject } from 'firebase/storage';
+import { ref, deleteObject } from 'firebase/storage';
 import MyNavbar from '../MyNavbar';
 import '../style/HomePage.css'
 
@@ -30,7 +30,7 @@ export default function Profile() {
     const [error, setError] = useState(false);
     const [errorMsg, setErrorMsg] = useState("");
     const { user, token } = useSelector((state) => state.user);
-    const { currentTrack, trackList, currentIndex } = useSelector((state) => state.player);
+    const { currentTrack } = useSelector((state) => state.player);
     const [deleteItems, setDeleteItems] = useState('')
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -55,6 +55,7 @@ export default function Profile() {
   
         }catch (error) {
           setError(true);
+          console.log(errorMsg)
           setErrorMsg(error.message);
         }
         
@@ -195,7 +196,7 @@ export default function Profile() {
       getUserId();
       dispatch(resetPlayer());
       setPlaying(false);
-    }, []);
+    }, [ ]);
 
     useEffect(()=>{
 

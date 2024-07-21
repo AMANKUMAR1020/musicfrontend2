@@ -4,7 +4,6 @@ import { useEffect } from "react";
 
 const AuthLayout = () => {
 	const { user } = useSelector((state) => state.user);
-	const { currentTrack } = useSelector((state) => state.player);
 	const { pathname } = useLocation();
 	const navigate = useNavigate();
 

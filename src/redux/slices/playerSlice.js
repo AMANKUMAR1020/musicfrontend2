@@ -43,7 +43,7 @@ export const playerSlice = createSlice({
 			}
 		},
 		prevTrack: (state) => {
-			if (state.currentIndex == 0) {
+			if (state.currentIndex === 0) {
 				state.currentIndex = state.trackList.length - 1;
 				state.currentTrack = state.trackList[state.trackList.length - 1];
 			} else {

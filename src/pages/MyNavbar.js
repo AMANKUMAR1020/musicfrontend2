@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, Outlet, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { logoutUser } from "../redux/slices/userSlice";
-import "./style/HomePage.css";
-import { resetPlayer, setCurrentTrack, setPlaying } from "../redux/slices/playerSlice";
 import 'react-toastify/dist/ReactToastify.css';
+import { resetPlayer } from "../redux/slices/playerSlice";
+import "./style/HomePage.css";
 
 export default function MyNavbar() {
   const { user, token } = useSelector((state) => state.user);

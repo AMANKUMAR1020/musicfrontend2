@@ -1,12 +1,12 @@
 import {setCurrentTrack, resetPlayer, setTrackList, playTrack, setPlaying } from '../../redux/slices/playerSlice';
 import { MusicPlayer } from "../../components/MusicPlayer";
-import { useLocation ,Link, useNavigate, useParams, Outlet } from "react-router-dom";
+import { useNavigate, useParams, Outlet } from "react-router-dom";
 import ArtisteSong from "../../components/ArtisteSong";
-import { AiOutlineLoading } from "react-icons/ai";
+//import { AiOutlineLoading } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from 'react';
 import { client } from "../../api";
-import SongList from "../SongList";
+//import SongList from "../SongList";
 //import '../style/ArtistePage.css'
 import '../style/HomePage.css'
 
@@ -24,13 +24,11 @@ export default function ArtistePage() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const { user, token } = useSelector((state) => state.user);
-    const { currentTrack, trackList, currentIndex } = useSelector((state) => state.player);
+    const { currentTrack } = useSelector((state) => state.player);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     useTitle(`${user.username}'s Profile`)
-
-	const location = useLocation();
 
     console.log("enter in ArtistePage");
 
@@ -66,7 +64,7 @@ export default function ArtistePage() {
             dispatch(resetPlayer());
         }
         setPlaying(false);
-    }, []);
+    }, [ ]);
 
   const onPlay = (song) => {
     dispatch(resetPlayer());//dispatch(resetPlayer());

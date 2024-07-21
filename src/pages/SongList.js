@@ -1,7 +1,7 @@
 // import { Box, Button, Divider, Flex, Heading, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link,useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { client } from "../api";
 import ArtisteSong from "../components/ArtisteSong";
 import { playTrack, setTrackList } from "../redux/slices/playerSlice";
@@ -9,17 +9,15 @@ import { AiOutlineLoading } from "react-icons/ai";
 import { MusicPlayer } from "../components/MusicPlayer";
 //import './style/SongList.css'
 import './style/HomePage.css'
-import {resetPlayer, setCurrentTrack,setPlaying } from "../redux/slices/playerSlice";
+import {resetPlayer } from "../redux/slices/playerSlice";
 
 const SongList = () => {
 	const [songs, setSongs] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(false);
 	const [errorMsg, setErrorMsg] = useState('');
-	const { user, token } = useSelector((state) => state.user);
 	const { currentTrack } = useSelector((state) => state.player);
 	const dispatch = useDispatch();
-    const naviagate = useNavigate();
 
 	const fetchSongs = async () => {
 		setLoading(true);
@@ -33,6 +31,7 @@ const SongList = () => {
 			.catch((e) => {
 				setLoading(false);
 				setError(true);
+				console.log(errorMsg)
 				setErrorMsg(e);
 			});
 	};

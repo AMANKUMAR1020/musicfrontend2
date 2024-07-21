@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Outlet, useNavigate } from "react-router-dom";
 import { client } from "../../api/index";
 import { storage } from '../../firebase';
 import { AiOutlineLoading } from "react-icons/ai";
-import { ref, getDownloadURL, uploadBytesResumable, deleteObject } from 'firebase/storage';
+import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
 import MyNavbar from "../MyNavbar";
 import Footer from "../Footer";
 
@@ -19,7 +19,7 @@ export default function SongUpload() {
   const [progresspercentimg, setProgresspercentimg] = useState(0);
   const [progresspercentsong, setProgresspercentsong] = useState(0);
 
-  const { user, token } = useSelector((state) => state.user);
+  const { token } = useSelector((state) => state.user);
   const navigate = useNavigate();
 
   const handleSubmitImg = (e) => {

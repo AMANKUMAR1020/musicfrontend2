@@ -1,6 +1,6 @@
 import { BsFillVolumeMuteFill, BsFillVolumeUpFill } from "react-icons/bs";
 import "./music.css"
-import { useState } from "react";
+
 
 const VolumeControl = ({ onToggle, onChange, volume }) => {
 		

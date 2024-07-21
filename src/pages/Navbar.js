@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 import { Outlet, useNavigate} from "react-router-dom";
 import "./style/HomePage.css";
-import MyNavbar from "./MyNavbar";
 
 const Navbar = () => {
   const navigate = useNavigate();

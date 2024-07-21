@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 import { client } from "../../api";
-import { useParams, Link, Outlet } from "react-router-dom";
+import { useParams, Outlet } from "react-router-dom";
 import { MdErrorOutline } from "react-icons/md";
 import ArtisteSong from "../../components/ArtisteSong";
 import { useDispatch, useSelector } from "react-redux";
 import { resetPlayer, playTrack,setTrackList } from "../../redux/slices/playerSlice";
-import { BsFillPlayFill } from "react-icons/bs";
-import { AiFillEdit } from "react-icons/ai";
+// import { BsFillPlayFill } from "react-icons/bs";
+// import { AiFillEdit } from "react-icons/ai";
 import { MusicPlayer } from "../../components/MusicPlayer";
 //import '../style/PlaylistId.css'
 import '../style/HomePage.css'
 import { BsCollectionPlayFill } from "react-icons/bs";
-import { AiOutlineLoading } from "react-icons/ai";
+//import { AiOutlineLoading } from "react-icons/ai";
 import MyNavbar from "../MyNavbar";
 import Footer from "../Footer";
 import useTitle from "../useTitle";
@@ -30,7 +30,6 @@ const PlaylistId = () => {
 	const dispatch = useDispatch();
 	const { user } = useSelector((state) => state.user);
 	const { currentTrack } = useSelector((state) => state.player);
-	const isUserPlaylist = user?.id === data?.userId;
 
 	useTitle(`${user.username}'s playlist`)
 
@@ -53,7 +52,7 @@ const PlaylistId = () => {
 
 	useEffect(() => {
 		PlaylistById();
-	}, []);
+	}, [ ]);
 
 	const handlePlay = () => {
 		
