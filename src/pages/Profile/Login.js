@@ -4,14 +4,11 @@ import { useDispatch } from "react-redux";
 import { client } from "../../api/index";
 import { loginUser,setUser } from "../../redux/slices/userSlice";
 import { resetPlayer } from "../../redux/slices/playerSlice";
-import ClipLoader from "react-spinners/ClipLoader";
-
 import '../style/Register.css'
 import MyNavbar from "../MyNavbar";
 import Footer from "../Footer";
 import useTitle from "../useTitle";
-//import { useNotificationCenter } from 'react-toastify/addons/use-notification-center';
-
+import Timer from "../Timer";
 const LoginPage = () => {
 
 	useTitle('Login Page')
@@ -60,48 +57,40 @@ const LoginPage = () => {
 
 	if(loading){
 		return (<>
-		<ClipLoader
-        color='yellow'
-        loading={loading}
-		cssOverride={{
-			display: "block",
-			margin: "0 auto",
-			borderColor: "yellow",
-			}}
-        size={100}
-        aria-label="Loading Spinner"
-        data-testid="loader"/>
-		</>)
-	} 
+		<Timer/>
+		</>)}
 
 	return (
 	<>
 	<MyNavbar/>
-		<h1 className="headline1">Login</h1>
-		
-		<div className="Container">
-			<div className="form-group">
-				<h2 className="headline2">Username</h2>
-				<input
-				className="input"
-				type="text"
-				value={username}
-				onChange={(e) => setUsername(e.target.value)}/>
-			</div>
-		<div className="form-group">
-			<h2 className="headline2">Password</h2>
-			<input
-			className="input"
-			type="password"
-			value={password}
-			onChange={(e) => setPassword(e.target.value)}
-			style={{position:'relative', right:'1px'}}/>
-		</div>
 
+	<h1 className="headline1">Login</h1>
+	<div className="formparant">
+		<form className="form">
+			<div className="div">
+				<label htmlFor="username" className="label">Username</label>
+				<input type="text" placeholder="Enter Username here..." name="username" className="input"
+				value={username}
+				onChange={(e) => setUsername(e.target.value)}
+				/>
+			</div>
+
+			<div className="div">
+				<label htmlFor="password" className="label">Password</label>
+				<input type="password" placeholder="Enter Password here..." name="password" className="input"
+				
+				value={password}
+				onChange={(e) => setPassword(e.target.value)}
+				/>
+			</div>
 			{error && <p className="error">{error}</p>}
-			<button className="btn-type-back" onClick={()=>{navigate(-1)}}>Back</button>
-			<button className="btn-type10" onClick={handleLogin}>Login</button>
-		</div>
+
+			<div className="button-div">
+				<button className="button" onClick={()=>{navigate(-1)}}>Back</button>
+				<button className="button" onClick={handleLogin}>Login</button>
+			</div>
+		</form>
+	</div>
 	<Outlet/>
 	<Footer/>
 	</>

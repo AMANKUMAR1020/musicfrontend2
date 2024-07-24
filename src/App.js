@@ -18,7 +18,7 @@ import EditPlaylist from './pages/Profile/EditPlaylist';
 
 // import Delete from './pages/Delete';
 import './App.css';
-// import Navbar from './pages/Navbar';
+import Navbar from './pages/Navbar';
 
 export default function App() {
   return (

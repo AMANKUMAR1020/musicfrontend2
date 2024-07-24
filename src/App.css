@@ -1,20 +1,14 @@
-/* .songlist{
-  margin:3px;
-  padding:4px;
-  border-radius:7px;
-  display:inline-block;
-  background-color:rgb(111, 108, 102);
-  color: rgb(47, 45, 45);
-  min-width:auto;
-  height:auto;
-}
+@import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300..700&display=swap');
 
 
-.songlistimg{
-  border-radius:7px;
+
+.App{
+  padding: 0px;
+  margin: 0px;
+  font-family: "Signika Negative", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+
+  background: rgb(238,174,202);
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
 }
-.songlistText{
-  text-align: center;
-  padding:0px;
-  margin:1px;
-} */

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { client } from '../../api';
 import { setUser } from '../../redux/slices/userSlice';
@@ -99,17 +99,6 @@ function EditProfile() {
 
   if(loading){
     return <AiOutlineLoading className="AiOutlineLoading" size={36}/>
-  //   <ClipLoader
-  //   color='yellow'
-  //   loading={loading}
-  // cssOverride={{
-  // display: "block",
-  // margin: "0 auto",
-  // borderColor: "yellow",
-  // }}
-  //   size={100}
-  //   aria-label="Loading Spinner"
-  //   data-testid="loader"/>
   }
 
 
@@ -119,7 +108,7 @@ function EditProfile() {
       <h1 className='headline1'>EditProfile</h1>
       <h3 className='headline2'>{user.username}</h3>
   
-      <div className='Container'>
+      <div style={{ textAlign:'center'}}>
         <p className='headline3'>Artiste Name</p>
         <input
           className="input"
@@ -137,30 +126,32 @@ function EditProfile() {
         style={{ borderRadius: '50%' }}
       />
   
-      <div className='Container'>
+      <div style={{ textAlign:'center'}}>
         <p className='headline3'>Change Image</p>
         {error && <p className='error'>{error.message}</p>}
         {successMsg && <p className='success'>{successMsg}</p>}
 
         <input
+        className='input'
           type="file"
           accept="image/png, image/jpeg"
           onChange={handleSubmitImg}
-          style={{ backgroundColor: 'lightgray', padding: '10px', borderRadius: '5px', marginBottom: '10px', width: '100%' }}
         />
+
         {
         updatedImage ? 
         <img src={updatedImage} alt={updatedImage} height={80} weight={80} />
         :  
-        <div className="innerbar" style={{ width: `${progresspercentimg}%` }}>{progresspercentimg}%</div>
+        <div style={{ textAlign:'center', display:'flex', fontSize:'20px'}}>{progresspercentimg}%</div>
         }
-
       </div>
-      <button className="btn-type-back" onClick={()=>{navigate(-1)}}>Back</button>
-      <button className="btn-type10" onClick={handleSubmit}>Update</button>
+
+      <div className='container-dashboard-button'>
+        <button className="container-dashboard-button-type" onClick={()=>{navigate(-1)}}>Back</button>
+        <button className="container-dashboard-button-type" onClick={handleSubmit}>Update</button>
+      </div>
   
       {loading && <p><AiOutlineLoading className="AiOutlineLoading" size={36}/></p>}
-      {/* {loading ? <p><AiOutlineLoading className="AiOutlineLoading" size={36}/></p> : <p></p>} */}
 
     <Outlet/>
     <Footer/>

@@ -1,43 +1,87 @@
-.title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  .form-group {
-    margin-bottom: 10px;
-  }
-  
-  .label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .input {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 200px;
-  }
-  
-  .error {
-    color: red;
-    margin-top: 10px;
-  }
-  
-  .button {    
-    padding: 0px 15px;
-    background-color: #e1ff00;
-    color: #62635f;
-    border: none;
-    border-radius: 7px;
-    cursor: pointer;
-    font-size: 15px;
-    cursor: pointer;
-  }
-  
-  .button:hover {
-    background-color: #eaeef3;
-    color: #e1ff00;
-  }
-  
+.formparant{
+  display: flex;
+  height: 80vh;
+  width: auto;
+  justify-content: center;
+}
+
+
+.form{
+  padding: 0px;
+  margin: 0px;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.13);
+  /* transform: translate(-50%, -50%); */
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  padding: 50px 35px;
+  flex-direction: column;
+}
+
+.div{
+  height: 2.5cm;
+    width: fit-content;
+    padding: 11px;
+    margin: 20px;
+}
+
+.label{
+  font-size: 27px;
+  color: gray;
+}
+
+.input{
+  font-size: 20px;
+  color: #7e7474;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 12px;
+  height: 50px;
+  width: max-content;
+  background-color: #b0aaed5e;
+  border: none;
+}
+
+.input:active{
+  background-color: #a9a9a970;
+  border: 1px;
+}
+.input:focus{
+  background-color: #a9a9a970;
+  border: 1px;
+}
+
+.button-div{
+  display: flex;
+  justify-content: center;
+}
+
+.button{
+  margin: 15px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 100%;
+  background-image: linear-gradient(to right, #ff6e7f 0%, #bfe9ff 51%, #ff6e7f 100%);
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 12px;
+  display: block;
+  border: none;
+
+}
+
+.button:hover {
+  cursor: pointer;
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}

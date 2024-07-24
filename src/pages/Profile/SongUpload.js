@@ -19,7 +19,7 @@ export default function SongUpload() {
   const [progresspercentimg, setProgresspercentimg] = useState(0);
   const [progresspercentsong, setProgresspercentsong] = useState(0);
 
-  const { token } = useSelector((state) => state.user);
+  const { user, token } = useSelector((state) => state.user);
   const navigate = useNavigate();
 
   const handleSubmitImg = (e) => {
@@ -139,53 +139,58 @@ export default function SongUpload() {
       <MyNavbar/>
         <h1 className="headline1">Song Upload</h1>
 
-        {error && errorMsg && <p className="error">{errorMsg}</p>}
-        {successMsg && <p className="success">{successMsg}</p>}
+        <div className="songupload">
 
-        <h2 className="headline2">Song title</h2>
-        <input
-          className="input"
-          value={title}
-          type="text"
-          onChange={(e) => {
-            setTitle(e.target.value);
-          }}
-          style={{ width: '100%' }}
-        />
+            {error && errorMsg && <p className="error">{errorMsg}</p>}
+            {successMsg && <p className="success">{successMsg}</p>}
 
-        <h2 className="headline2">Song coverImage</h2>
-        <input
-          type="file"
-          accept="image/png, image/jpeg"
-          onChange={handleSubmitImg}
-        />
+            <h2 className="headline2">Song title</h2>
+            <input
+              className="input"
+              value={title}
+              type="text"
+              onChange={(e) => {
+                setTitle(e.target.value);
+              }}
+              placeholder="Enter the song title"
+            />
 
-        {coverImage ?
-        <img src={coverImage} alt={coverImage} height={70} weight={80}/>
-        :
-        <div className="innerbar" style={{ width: `${progresspercentimg}%` }}>{progresspercentimg}%</div>
-        }
+            <h2 className="headline2">Song coverImage</h2>
+            <input
+            className="input"
+              type="file"
+              accept="image/png, image/jpeg"
+              onChange={handleSubmitImg}
+            />
 
-        <h2 className="headline2">Song file</h2>
-        <input
-          type="file"
-          accept="audio/*"
-          onChange={handleSubmitSong}
-          style={{ width: '100%' }}
-        />
+            {coverImage ?
+            <img src={coverImage} alt={coverImage} height={70} weight={80}/>
+            :
+            <div style={{ textAlign:'center', display:'flex', fontSize:'20px'}}>{progresspercentimg}%</div>
+            }
 
-        {songUrl ? 
-        <audio controls src={songUrl} alt="image" height={70} weight={80}></audio> 
-        : 
-        <div className="innerbar" style={{ width: `${progresspercentsong}%` }}>{progresspercentsong}%</div>
-        }
+            <h2 className="headline2">Song file</h2>
+            <input
+              className="input"
+              type="file"
+              accept="audio/*"
+              onChange={handleSubmitSong}
+            />
 
-      <button className="btn-type1" onClick={()=>{navigate(-1)}}>Back</button>
-        {loading ?
-        <p style={{ textAlign: 'center' }}><AiOutlineLoading className="AiOutlineLoading" size={36} /></p>
-        :
-        <button className="btn-type1" onClick={handleSubmit}>Upload Song</button>
-      }
+            {songUrl ? 
+            <audio controls src={songUrl} alt="image" height={70} weight={80}></audio> 
+            : 
+            <div style={{ textAlign:'center', display:'flex', fontSize:'20px'}}>{progresspercentsong}%</div>
+            }
+
+            <div className="container-dashboard-button">
+                <button className="container-dashboard-button-type" onClick={()=>{navigate(-1)}}>Back</button>
+                  {loading ? <p style={{ textAlign: 'center' }}><AiOutlineLoading className="AiOutlineLoading" size={36} /></p>
+                  :
+                  <button className="container-dashboard-button-type" onClick={handleSubmit}>Upload Song</button>
+                }
+            </div>
+        </div>
 
       <Outlet />
       <Footer/>

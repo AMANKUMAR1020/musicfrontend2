@@ -1,23 +1,15 @@
 import { resetPlayer, setTrackList, playTrack, setPlaying } from '../../redux/slices/playerSlice';
-import { MusicPlayer } from "../../components/MusicPlayer";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ArtisteSong from "../../components/ArtisteSong";
-import { AiOutlineLoading } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from 'react';
 import { client } from "../../api";
-import SongList from "../SongList";
-//import '../style/Profile.css'
 
 import { storage } from '../../firebase';
-import { ref, getDownloadURL, uploadBytesResumable, deleteObject } from 'firebase/storage';
-import MyNavbar from '../MyNavbar';
+import { ref, deleteObject } from 'firebase/storage';
 import '../style/HomePage.css'
 
-import { RiEdit2Fill } from "react-icons/ri";
 import { LuUpload } from "react-icons/lu";
-// import { CiPlay1 } from "react-icons/ci";
-// import { FaPlay } from "react-icons/fa";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import { MdOutlineCreateNewFolder } from "react-icons/md";
 
@@ -28,7 +20,6 @@ export default function Container() {
     const [error, setError] = useState(false);
     const [errorMsg, setErrorMsg] = useState("");
     const { user, token } = useSelector((state) => state.user);
-    const { currentTrack, trackList, currentIndex } = useSelector((state) => state.player);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     
@@ -38,6 +29,8 @@ export default function Container() {
   const getUserId = async () => {
     setLoading(true);
     setError(false);
+    console.log(loading)
+
     const userid = user.id//user._id !== undefined && user._id !== null ? user._id : user.id;
 
     try {
@@ -50,11 +43,14 @@ export default function Container() {
 
       }catch (error) {
         setError(true);
+        console.log(errorMsg)
         setErrorMsg(error.message);
       }
       
       setLoading(false);
     console.log("user", user);
+    console.log(loading)
+
   };
   
     const onPlay = (song) => {
@@ -97,8 +93,6 @@ export default function Container() {
             }).then((res) => {
                 setLoading(false);
                 console.log("delete successfully playlist",res.data);
-//              setData(res.data);
-//                getUserId();
                 dispatch(resetPlayer());
                 setPlaying(false);                            
             }).catch((e) => {
@@ -162,7 +156,6 @@ export default function Container() {
           }).then((res) => {
             setLoading(false);
             console.log('delete successfully', res.data);
-//            getUserId();
             dispatch(resetPlayer());    
             setPlaying(false);
           }).catch((e) => {
@@ -202,7 +195,6 @@ export default function Container() {
                 {data?.userCreateSongs?.map((song) => (
                     <span>
                       <ArtisteSong key={song._id} song={song} handlePlay={onPlay} />
-                      {/* <ArtisteSong key={song?._id} song={song} handlePlay={onPlay} /> */}
                       <button className='btn-type5' onClick={(e) => { handleDelete(song?._id, e) }}><MdOutlineDeleteOutline/></button>
                     </span>
                 ))}
@@ -218,7 +210,6 @@ export default function Container() {
               <div>
                 {data?.userFavoritesSongs?.map((song) => (
                     <span>
-                      {/* <ArtisteSong key={song?._id} song={song} handlePlay={onPlay} /> */}
                       <ArtisteSong key={song._id} song={song} handlePlay={onPlay} />
                       <button className='btn-type5' onClick={(e) => { handleDelete(song?._id, e) }}><MdOutlineDeleteOutline/></button>
                     </span>)

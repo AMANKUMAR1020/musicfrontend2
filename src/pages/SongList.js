@@ -1,13 +1,10 @@
-// import { Box, Button, Divider, Flex, Heading, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { client } from "../api";
 import ArtisteSong from "../components/ArtisteSong";
 import { playTrack, setTrackList } from "../redux/slices/playerSlice";
 import { AiOutlineLoading } from "react-icons/ai";
 import { MusicPlayer } from "../components/MusicPlayer";
-//import './style/SongList.css'
 import './style/HomePage.css'
 import {resetPlayer } from "../redux/slices/playerSlice";
 
@@ -31,8 +28,8 @@ const SongList = () => {
 			.catch((e) => {
 				setLoading(false);
 				setError(true);
-				console.log(errorMsg)
 				setErrorMsg(e);
+				console.log(errorMsg)
 			});
 	};
 

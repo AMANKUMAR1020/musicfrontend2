@@ -6,15 +6,15 @@ import {
 	prevTrack,
 	setPlaying,
 } from "../../redux/slices/playerSlice";
-// import { client } from "../../api";
-// import { setUser } from "../../redux/slices/userSlice";
+import { client } from "../../api";
+import { setUser } from "../../redux/slices/userSlice";
 import VolumeControl from "./VolumeControl";
 import TrackDetails from "./TrackDetails";
 import PlayControls from "./PlayControls";
 //import LoginModal from "../LoginModal";
 import PlayingBar from "./PlayingBar";
-// import { CiHeart } from "react-icons/ci";
-// import { FaHeart } from "react-icons/fa";
+import { CiHeart } from "react-icons/ci";
+import { FaHeart } from "react-icons/fa";
 //import { setModalMessage } from "../../redux/slices/modalSlice";
 import "./music.css"
 
@@ -24,15 +24,15 @@ const MusicPlayer = () => {
 	// const toast = useToast();
 	const dispatch = useDispatch();
 	const { currentTrack, repeatStatus, currentIndex, trackList, isPlaying } = useSelector((state) => state.player);
-	// const { user, token } = useSelector((state) => state.user);
+	const { user, token } = useSelector((state) => state.user);
 
 	const audioRef = useRef();
 
-	// const playAnimationRef = useRef();// i addded it
+	const playAnimationRef = useRef();// i addded it
 
 	const isEndOfTracklist = currentIndex === trackList.length - 1;
 
-	// const [duration, setDuration] = useState(0);
+	const [duration, setDuration] = useState(0);
 	const [songDetails, setSongDetails] = useState(null);
 	const [audioPlaying, setAudioPlaying] = useState(audioRef.current && audioRef.current.playing);
 
@@ -138,7 +138,7 @@ const MusicPlayer = () => {
 	}, [currentTrack.src]);
 
 	const handleNextSong = () => {
-		if (trackList.length === 1) {
+		if (trackList.length == 1) {
 			restartSong();
 		} else {
 			dispatch(nextTrack());
@@ -146,7 +146,7 @@ const MusicPlayer = () => {
 	};
 
 	const handlePreviousSong = () => {
-		if (trackList.length === 1) {
+		if (trackList.length == 1) {
 			restartSong();
 		} else {
 			dispatch(prevTrack());

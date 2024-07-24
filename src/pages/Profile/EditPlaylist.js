@@ -7,7 +7,7 @@ import { AiOutlineLoading } from "react-icons/ai";
 import MyNavbar from "../MyNavbar";
 import Footer from "../Footer";
 import useTitle from "../useTitle";
-
+import '../style/Editplaylist.css';
 
 const EditPlaylist = () => {
 
@@ -58,12 +58,7 @@ const EditPlaylist = () => {
     setError(false);
 
     try {
-      await client.put(`/playlists/${id}`,{
-          title,
-          description,
-          isPrivate,
-          songIds
-        },{
+      await client.put(`/playlists/${id}`,{title,  description,  isPrivate,  songIds},{
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json"
@@ -122,7 +117,7 @@ const EditPlaylist = () => {
   useEffect(() => {
     fetchPlaylist();
     fetchSongs();
-  }, [ ]);
+  }, []);
 
   if (error) {
     return (
@@ -137,12 +132,12 @@ const EditPlaylist = () => {
   return (
     <>
     <MyNavbar/>
-      <h1 className="headline1">Playlist Edit</h1>
+      <h1 className="playlist-headline1">Playlist Edit</h1>
       {error && <p className="error">{errorMsg} <MdErrorOutline color="inherit" size={32} /></p>}
       {successMsg && <p className="success">{successMsg}</p>}
 
 
-      <h3 className="headline3">Playlist title</h3>
+      <h3 className="playlist-headline3">Playlist title</h3>
       <input
         style={{width:"40%"}}
         className="input"
@@ -153,7 +148,7 @@ const EditPlaylist = () => {
         }}
       />
 
-      <h3 className="headline3">Playlist description</h3>
+      <h3 className="playlist-headline3">Playlist description</h3>
       <textarea
         style={{ width: "40%", height: "87px", display:"block",fontSize: '18px', color:'darkslategray' }}
         value={description}
@@ -162,12 +157,13 @@ const EditPlaylist = () => {
         cols="6"
       ></textarea>
 
-      <h3 className="text">Playlist is Private</h3>
+      <h3 className="playlist-headline3">Playlist is Private</h3>
       <button className="btn-type2"
         onClick={() => setIsPrivate(!isPrivate)}>{isPrivate ? <p className="text">true</p> : <p className="text">false</p>}
       </button>
 
-      <div className="Container"><h3 className="headline3">Songs </h3></div>
+      <div className="Container">
+        <h3 className="playlist-headline2">Songs </h3>
       <ul>
         {data.map((song) => (
           <li key={song._id} onClick={() => handleCollect(song._id)}>
@@ -184,13 +180,17 @@ const EditPlaylist = () => {
         ))}
       </ul>
 
-      <button className="btn-type-back" onClick={()=>{navigate(-1)}}> Back</button>
-        {loading 
-        ?
-        <p><AiOutlineLoading className="AiOutlineLoading" size={36} /></p>
-        :
-        <button className="btn-type10" onClick={handleSubmit}>Edit Playlist</button>
-        }
+      </div>
+      
+      <div className="btn">
+        <button className="container-dashboard-button-type" onClick={()=>{navigate(-1)}}> Back</button>
+          {loading 
+          ?
+          <p><AiOutlineLoading className="AiOutlineLoading" size={36} /></p>
+          :
+          <button className="container-dashboard-button-type" onClick={handleSubmit}>Edit Playlist</button>
+          }
+      </div>
 
     <Outlet/>
     <Footer/>

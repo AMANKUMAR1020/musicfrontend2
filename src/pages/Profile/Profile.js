@@ -2,12 +2,9 @@ import { setCurrentTrack,resetPlayer, setTrackList, playTrack, setPlaying } from
 import { MusicPlayer } from "../../components/MusicPlayer";
 import { Outlet, useNavigate } from "react-router-dom";
 import ArtisteSong from "../../components/ArtisteSong";
-//import { AiOutlineLoading } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from 'react';
 import { client } from "../../api";
-//import SongList from "../SongList";
-//import '../style/Profile.css'
 
 import { storage } from '../../firebase';
 import { ref, deleteObject } from 'firebase/storage';
@@ -16,8 +13,6 @@ import '../style/HomePage.css'
 
 import { RiEdit2Fill } from "react-icons/ri";
 import { LuUpload } from "react-icons/lu";
-// import { CiPlay1 } from "react-icons/ci";
-// import { FaPlay } from "react-icons/fa";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import { MdOutlineCreateNewFolder } from "react-icons/md";
 import Footer from '../Footer';
@@ -30,7 +25,7 @@ export default function Profile() {
     const [error, setError] = useState(false);
     const [errorMsg, setErrorMsg] = useState("");
     const { user, token } = useSelector((state) => state.user);
-    const { currentTrack } = useSelector((state) => state.player);
+    const { currentTrack, trackList, currentIndex } = useSelector((state) => state.player);
     const [deleteItems, setDeleteItems] = useState('')
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -55,7 +50,6 @@ export default function Profile() {
   
         }catch (error) {
           setError(true);
-          console.log(errorMsg)
           setErrorMsg(error.message);
         }
         
@@ -196,7 +190,7 @@ export default function Profile() {
       getUserId();
       dispatch(resetPlayer());
       setPlaying(false);
-    }, [ ]);
+    }, []);
 
     useEffect(()=>{
 
@@ -236,7 +230,8 @@ export default function Profile() {
               </div>
           </div>
 
-          <div className='Container'>
+
+          <div className='fav-container-page'>
               <h1 className='headline2'>userFavoritesSongs</h1>
               {data?.userFavoritesSongs?.length < 1 && <p  className='text'>You have not favorited any songs</p>}
               {error && (<p className='error'>Sorry, an error occurred</p>)}
@@ -252,8 +247,10 @@ export default function Profile() {
               </div>
           </div>
 
-          <div className='Container'>
-              <h1 className='headline2'>userPlaylist</h1>
+
+
+          <div className='playlist-container-page'>
+              <h1 className='playlist-headline2'>userPlaylist</h1>
 
               {data?.userPlaylist?.length < 1 && <p className='text'>You have not created any playlists</p>}
               {error && (<p className='error'>Sorry, an error occurred</p>)}
@@ -264,7 +261,7 @@ export default function Profile() {
 
               {data?.userPlaylist?.map((playlist) => (
                 <div key={playlist?._id}>
-                    <div className="flex-card2">
+                    <div className='flex-card-playlist-profile'>
                       <p className="headline3" onClick={() => { navigate(`/playlist/${playlist?._id}`) }}>{playlist?.title}</p>
                       <p className="text">{trimming(playlist?.description)}</p>
                       <button className='btn-type6' onClick={(e) => { handleDeletePlaylist(playlist?._id, e) }}> <MdOutlineDeleteOutline/> </button>

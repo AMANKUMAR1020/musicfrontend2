@@ -1,24 +1,25 @@
-import { useSelector } from "react-redux";
-import { useState } from "react";
-// import { client } from "../api";
-// import { CiHeart } from "react-icons/ci";
-// import { FaHeart } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { client } from "../api";
+import { CiHeart } from "react-icons/ci";
+import { FaHeart } from "react-icons/fa";
 //import '../pages/style/ArtisteSong.css'
 import '../pages/style/HomePage.css'
 
+import './ArtisteSong.css'
 import { BsFillPlayCircleFill } from "react-icons/bs";
 import { GiMusicalNotes } from "react-icons/gi";
-// import Like from "./Like";
+import Like from "./Like";
 //import './MusicPlayer/music.css'
 
 
 const ArtisteSong = ({ song, handlePlay }) => {
-  // const [loading, setLoading] = useState(false);
-  // const [error, setError] = useState(false);
-  // const [errorMsg, setErrorMsg] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
   const { currentTrack, isPlaying } = useSelector((state) => state.player);
 
-  // const { user, token } = useSelector((state) => state.user);
+  const { user, token } = useSelector((state) => state.user);
   const isCurrentTrack = currentTrack?._id === song?._id;
 
   const playSong = () => {
@@ -33,21 +34,82 @@ const ArtisteSong = ({ song, handlePlay }) => {
         alt={song?.title}
       />
       
-      <p className="text">{song?.title}</p>
-      <p className="text">{song?.Artiste}</p>
+      <p className="song-title">{song?.title}</p>
+      <p className="song-artiste">{song?.Artiste}</p>
 
-  <p className="text">{/*className="text"*/
-    isCurrentTrack && isPlaying ? 
-      (<button style={{ fontSize: '40px' }} className="btn-type4"><GiMusicalNotes /></button>) :
-      (!isPlaying ? (<button style={{ fontSize: '40px' }} className="btn-type4" onClick={playSong}><BsFillPlayCircleFill /></button>) : null)
-    }
-  </p>
+      {isCurrentTrack && isPlaying ?
+       <button style={{ fontSize: '40px' }} className="isplaying" ><GiMusicalNotes /></button>
+    : <button style={{ fontSize: '40px' }} className="isplaying" onClick={playSong}><BsFillPlayCircleFill /></button>}
 
+      {/* {isCurrentTrack && isPlaying ? <button className="btn-type4"><GiMusicalNotes /></button>
+    : !isPlaying ? <button style={{ fontSize: '40px' }} className="btn-type4" onClick={playSong}><BsFillPlayCircleFill /></button>
+    : <button className="btn-type4"><GiMusicalNotes /></button>
+    } */}
     </div>
   );
 };
 
 export default ArtisteSong;
+
+
+
+
+
+
+
+
+
+
+// import { useDispatch, useSelector } from "react-redux";
+// import { useState, useEffect } from "react";
+// import { client } from "../api";
+// import { CiHeart } from "react-icons/ci";
+// import { FaHeart } from "react-icons/fa";
+// //import '../pages/style/ArtisteSong.css'
+// import '../pages/style/HomePage.css'
+
+// import { BsFillPlayCircleFill } from "react-icons/bs";
+// import { GiMusicalNotes } from "react-icons/gi";
+// import Like from "./Like";
+// //import './MusicPlayer/music.css'
+
+
+// const ArtisteSong = ({ song, handlePlay }) => {
+//   const [loading, setLoading] = useState(false);
+//   const [error, setError] = useState(false);
+//   const [errorMsg, setErrorMsg] = useState("");
+//   const { currentTrack, isPlaying } = useSelector((state) => state.player);
+
+//   const { user, token } = useSelector((state) => state.user);
+//   const isCurrentTrack = currentTrack?._id === song?._id;
+
+//   const playSong = () => {
+//     handlePlay(song);
+//   };
+
+//   return (
+//     <div className="songlist">
+//       <img
+//         className="img"
+//         src={song?.coverImage}
+//         alt={song?.title}
+//       />
+      
+//       <p className="text">{song?.title}</p>
+//       <p className="text">{song?.Artiste}</p>
+
+//   <p className="text">{/*className="text"*/
+//     isCurrentTrack && isPlaying ? 
+//       (<button style={{ fontSize: '40px' }} className="btn-type4"><GiMusicalNotes /></button>) :
+//       (!isPlaying ? (<button style={{ fontSize: '40px' }} className="btn-type4" onClick={playSong}><BsFillPlayCircleFill /></button>) : null)
+//     }
+//   </p>
+
+//     </div>
+//   );
+// };
+
+// export default ArtisteSong;
 
 
 

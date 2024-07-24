@@ -5,7 +5,6 @@ import { loginUser } from "../../redux/slices/userSlice";
 import { resetPlayer } from "../../redux/slices/playerSlice";
 import { Outlet, useNavigate } from "react-router-dom";
 import '../style/Register.css'
-//import '../style/HomePage.css'
 import MyNavbar from "../MyNavbar";
 import Footer from "../Footer";
 import { AiOutlineLoading } from "react-icons/ai";
@@ -70,41 +69,42 @@ const RegisterPage = () => {
     </>)
   }
 
+  
+
   return (
     <>
     <MyNavbar/>
-      <h1 className="headline1">RegisterPage</h1>
-      <div className="Container">
-        <div className="form-group">
-          <label className="headline2">Username:</label>
-          <input
-            className="input"
-            type="text"
+
+    <h1 className="headline1">RegisterPage</h1>
+	<div className="formparant">
+    { loading ?
+     <p><AiOutlineLoading className="AiOutlineLoading" size={36} /></p> 
+     : 
+      <form className="form">
+          <div className="div">
+            <label htmlFor="username" className="label">Username</label>
+            <input type="text" placeholder="Enter Username here..." name="username" className="input"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label className="headline2">Password:</label>
-          <input
-            className="input"
-            type="password"
+            />
+          </div>
+
+          <div className="div">
+            <label htmlFor="password" className="label">Password</label>
+            <input type="password" placeholder="Enter Password here..." name="password" className="input"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
+            />
+          </div>
         {error && <p className="error">{error}</p>}
-        
-          <button className="btn-type-back" onClick={()=>{navigate(-1)}}>Back</button>
 
-          {loading 
-          ?
-          <p><AiOutlineLoading className="AiOutlineLoading" size={36} /></p>
-          : 
-          <button className="btn-type1" onClick={handleLogin}>Register</button>}
-          
-    </div>
-
+        <div className="button-div">
+          <button className="button" onClick={()=>{navigate(-1)}}>Back</button>
+          <button className="button" onClick={handleLogin}>Register</button>
+        </div>
+      </form>
+    }
+	</div>        
     <Outlet/>
     <Footer/>
     </>

@@ -62,9 +62,9 @@ export default function PlaylistPage() {
     <>
     <MyNavbar/>
     <div>
-      <h1 className="headline1">Playlists</h1>
-      <p className="headline2">Discover new Playlists</p>
-      <div className="Container">
+      <h1 className="playlist-headline1">Playlists</h1>
+      <p className="playlist-headline2">Discover new Playlists</p>
+      <div className="playlist-container-page">
         {loading && playlists.length < 1 && (
           <AiOutlineLoading className="spin" size={36} />
         )}
@@ -73,11 +73,11 @@ export default function PlaylistPage() {
         )}
         {playlists.map((playlist) => (
 
-          <div className="flex-card2" key={playlist._id}>
+          <div className="flex-card-playlist" key={playlist._id}>
             <Link to={`${playlist._id}`}>
               <p  className="headline3">{playlist.title}<span>&nbsp;</span></p>
+              <p className="text">{trimming(playlist.description)}</p>
             </Link>
-            <p className="text">{trimming(playlist.description)}</p>
           </div>
         ))}
         {error && <div  className="text">Sorry, an error occurred</div>}
