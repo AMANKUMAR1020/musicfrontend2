@@ -64,7 +64,7 @@ export default function PlaylistPage() {
     <div>
       <h1 className="playlist-headline1">Playlists</h1>
       <p className="playlist-headline2">Discover new Playlists</p>
-      <div className="playlist-container-page">
+      <div className="playlist-container-page-1">
         {loading && playlists.length < 1 && (
           <AiOutlineLoading className="spin" size={36} />
         )}
