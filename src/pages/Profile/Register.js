@@ -10,6 +10,7 @@ import Footer from "../Footer";
 import { AiOutlineLoading } from "react-icons/ai";
 import ClipLoader from "react-spinners/ClipLoader";
 import useTitle from "../useTitle";
+import  Timer  from '../Timer.js';
 
 const RegisterPage = () => {
 
@@ -54,8 +55,7 @@ const RegisterPage = () => {
 
 
   if(loading){
-    return (<>
-      	<ClipLoader
+    return (<>      	{/* <ClipLoader
         color='yellow'
         loading={loading}
         cssOverride={{
@@ -65,7 +65,8 @@ const RegisterPage = () => {
           }}
         size={100}
         aria-label="Loading Spinner"
-        data-testid="loader"/>
+        data-testid="loader"/> */}
+        <Timer/>
     </>)
   }
 
