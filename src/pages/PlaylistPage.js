@@ -60,33 +60,35 @@ export default function PlaylistPage() {
 
   return (
     <>
-    <MyNavbar/>
-    <div>
-      <h1 className="playlist-headline1">Playlists</h1>
-      <p className="playlist-headline2">Discover new Playlists</p>
-      <div className="playlist-container-page-other-user">
-        {loading && playlists.length < 1 && (
-          <AiOutlineLoading className="spin" size={36} />
-        )}
-        {playlists.length < 1 && (
-          <p className="text">No playlist found</p>
-        )}
-        {playlists.map((playlist) => (
-
-          <div className="flex-card-playlist" key={playlist._id}>
-            <Link to={`${playlist._id}`}>
-              <p  className="headline3">{playlist.title}<span>&nbsp;</span></p>
-              <p className="text">{trimming(playlist.description)}</p>
-            </Link>
+      <MyNavbar />
+      <div>
+        <h1 className="playlist-headline1">Playlists</h1>
+        <p className="playlist-headline2">Discover new Playlists</p>
+        <div className="playlist-container-page-other-user">
+          <div className="playlist-container-page-1">
+            {loading ? (
+              <AiOutlineLoading className="spin" size={36} />
+            ) : playlists.length < 1 ? (
+              <p className="text">No playlist found</p>
+            ) : (
+              playlists.map((playlist) => (
+                <div className="flex-card-playlist" key={playlist._id}>
+                  <Link to={`${playlist._id}`}>
+                    <p className="headline3">
+                      {playlist.title}
+                      <span>&nbsp;</span>
+                    </p>
+                    <p className="text">{trimming(playlist.description)}</p>
+                  </Link>
+                </div>
+              ))
+            )}
+            {error && <div className="text">Sorry, an error occurred</div>}
           </div>
-        ))}
-        {error && <div  className="text">Sorry, an error occurred</div>}
+        </div>
+        <Outlet />
+        <Footer />
       </div>
-    </div>
-    
-    <Outlet/>
-    <Footer/>
     </>
   );
-  
-}
+};
