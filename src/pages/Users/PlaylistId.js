@@ -106,7 +106,7 @@ const PlaylistId = () => {
 			{/* <MyNavbar/> */}
 
 			<h4 style={{padding: '10px 0px 10px 0px',margin: '5px'}} className="text">{data?.playlistSongs?.length} Songs</h4>
-			<button className="btn-type10" onClick={handlePlay}>Play All<BsCollectionPlayFill/></button>
+			<button className="container-dashboard-button-type" onClick={handlePlay}>Play All<BsCollectionPlayFill/></button>
 
 			<div className="Container">
 				{data?.playlistSongs?.map((song) => (

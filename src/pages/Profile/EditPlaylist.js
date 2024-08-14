@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { client } from "../../api";
 import { MdErrorOutline } from "react-icons/md";
 import { useSelector } from "react-redux";
-import { Outlet, useNavigate, useParams } from "react-router-dom";
+import { Outlet, redirect, useNavigate, useParams } from "react-router-dom";
 import { AiOutlineLoading } from "react-icons/ai";
 import MyNavbar from "../MyNavbar";
 import Footer from "../Footer";
@@ -125,6 +125,7 @@ const EditPlaylist = () => {
         {errorMsg}
         <MdErrorOutline size={32} />
         <p>An error occurred</p>
+        <button onClick={()=>{redirect(-1)}}> Back </button>
       </>
     );
   }

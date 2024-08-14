@@ -7,7 +7,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import MyNavbar from '../MyNavbar';
 import Footer from '../Footer';
 import { storage } from '../../firebase';
-import { ref, getDownloadURL, uploadBytesResumable, deleteObject } from 'firebase/storage';
+import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
 import useTitle from '../useTitle';
 
 function EditProfile() {

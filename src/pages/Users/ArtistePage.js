@@ -1,6 +1,6 @@
 import {setCurrentTrack, resetPlayer, setTrackList, playTrack, setPlaying } from '../../redux/slices/playerSlice';
 import { MusicPlayer } from "../../components/MusicPlayer";
-import { useLocation, useNavigate, useParams, Outlet } from "react-router-dom";
+import { useNavigate, useParams, Outlet } from "react-router-dom";
 import ArtisteSong from "../../components/ArtisteSong";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from 'react';
@@ -20,13 +20,11 @@ export default function ArtistePage() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const { user, token } = useSelector((state) => state.user);
-    const { currentTrack, trackList, currentIndex } = useSelector((state) => state.player);
+    const { currentTrack } = useSelector((state) => state.player);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     useTitle(`${user.username}'s Profile`)
-
-	const location = useLocation();
 
     console.log("enter in ArtistePage");
 
@@ -121,7 +119,7 @@ export default function ArtistePage() {
         <h1 className="headline1">ArtistePage</h1>
         <p className="headline2">Discover new artistes</p>
 
-        <div style={{textAlign: 'left', margin: '20px' , padding: '20px'}}>
+        <div style={{textAlign: 'left'}}>
                 {/* <h1 className="headline1">ArtistePage</h1> */}
                 {!loading && !error && !data && (<p className='text'>{"You haven't any songs yet..."}</p>)}
 
@@ -134,7 +132,7 @@ export default function ArtistePage() {
                     <p className='headline3'>&nbsp;&nbsp;&nbsp;{data?.user?.name}</p>
                 </div>
 
-                <div className='Container'>
+                <div className='Container' style={{margin: '20px' , padding: '20px'}}>
                     <h1 className="headline2">userCreateSongs</h1>
                     {/* <button onClick={()=>{navigate('/profile/createsong')}}>Upload New</button> */}
 
@@ -149,7 +147,7 @@ export default function ArtistePage() {
                 </div>
         </div>
 
-            <div className='Container'>
+            <div className='fav-container-page'>
                 <h1 className="headline2">userFavoritesSongs</h1>
                 {data?.userFavoritesSongs?.length < 1 && <p className='text'>You have not favorited any songs</p>}
                 {error && (<p className='error'>Sorry, an error occurred</p>)}
@@ -161,7 +159,7 @@ export default function ArtistePage() {
                 </div>
             </div>
 
-            <div className='Container'>
+            <div className='playlist-container-page'>
                 <h1 className="headline2">userPlaylist</h1>
                 {loading && data?.userPlaylist?.length < 1 && <p>You have not created any playlists</p>}
                 {error && (<p>Sorry, an error occurred</p>)}
@@ -172,8 +170,8 @@ export default function ArtistePage() {
                     ))} */}
                 {data?.userPlaylist?.map((playlist) => (
                     <div key={playlist?._id}>
-                        <div className="flex-card2">
-                            <p className="headline3" style={{ cursor: 'pointer' }} onClick={() => { navigate(`/playlist/${playlist?._id}`) }}>{playlist?.title}</p>
+                        <div className="flex-card-playlist"  style={{ cursor: 'pointer' }} onClick={() => { navigate(`/playlist/${playlist?._id}`) }}>
+                            <p className="headline3">{playlist?.title}</p>
                             <p className="text">{playlist?.description}</p>
                     </div>
                 </div>

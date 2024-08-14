@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { client } from "../api";
 import ClipLoader from "react-spinners/ClipLoader";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, Outlet, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, Outlet } from "react-router-dom";
 import { resetPlayer} from "../redux/slices/playerSlice";
 import './style/ArtistesPage.css'
 import './style/HomePage.css'
@@ -17,9 +17,6 @@ const ArtistesPage = () => {
 	const [artistes, setArtistes] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(false);
-	const { user, token } = useSelector((state) => state.user);
-	const navigate = useNavigate();
-	const location = useLocation();
 	const dispatch = useDispatch();
   
 
@@ -49,9 +46,6 @@ const ArtistesPage = () => {
 
 		<h1 className="headline1">Artistes</h1>
 		<p className="headline2">Discover new artistes</p>
-			{/* <MyNavbar/> */}
-			{/* <h1 className="headline1">Artistes</h1>
-			<p className="headline2">Discover new artistes</p> */}
 			<div className="artistes-container-page">
 				{loading && artistes.length < 1 && (
 					<ClipLoader

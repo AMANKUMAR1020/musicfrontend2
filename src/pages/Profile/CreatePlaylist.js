@@ -91,7 +91,7 @@ const CreatePlaylist = () => {
       }).then((res) => {
         console.log("songsIds", res.data);
       });
-      successMsg(" :) you create playlist successFully")
+      setSuccessMsg(" :) you create playlist successFully")
 
     } catch (error) {
       setError(true);
@@ -135,7 +135,7 @@ const CreatePlaylist = () => {
       ></textarea>
   
       <h4 className="text" style={{display:'contents'}}>Playlist is Private</h4>
-      <button className="btn-type7"
+      <button className="container-dashboard-button-type"
         onClick={() => setIsPrivate(!isPrivate)}>
         {isPrivate ? <p>true</p> : <p>false</p>}
       </button>
@@ -157,9 +157,9 @@ const CreatePlaylist = () => {
         ))}
       </ul>
   
-      <button className="btn-type6" onClick={()=>{navigate(-1)}}>Back</button>
+      <button className="container-dashboard-button-type" onClick={()=>{navigate(-1)}}>Back</button>
 
-      <button className="btn-type6" onClick={handleSubmit}>
+      <button className="container-dashboard-button-type" onClick={handleSubmit}>
         {loading 
         ?
         <p><AiOutlineLoading className="AiOutlineLoading" size={36} /></p>

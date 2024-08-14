@@ -267,6 +267,7 @@ export default function Profile() {
                       <button className='btn-type6' onClick={(e) => { handleDeletePlaylist(playlist?._id, e) }}> <MdOutlineDeleteOutline/> </button>
                       <button className='btn-type8' onClick={(e) => { navigate(`/editplaylist/${playlist?._id}`) }}>Edit</button>
                     </div>
+                    {console.log(playlist, playlist?.description)}
                   </div>
               ))}
               </div>

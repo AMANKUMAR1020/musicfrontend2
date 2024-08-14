@@ -4,12 +4,8 @@
     font-weight: bold;
 }
 .song-artiste {
-    /* text-align: center; */
     font-size: 18px;
-    /* bottom: 20px; */
-    /* margin-bottom: -50px; */
     padding-bottom: -50px;
-    /* margin-bottom: -5px; */
     color: #888585;
     font-weight: bold;
 }
@@ -19,4 +15,7 @@
     background: none;
     color: #839d9bc7;
     border: none;
+}
+.isplaying:hover{
+    cursor: pointer;
 }

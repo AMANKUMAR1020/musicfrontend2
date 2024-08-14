@@ -61,7 +61,7 @@ const SongList = () => {
 				))}
 				</div>
 				
-				{!loading && !error && songs.length < 1 && (<p className="ErrorMessage">{"You haven't any songs yet..."}</p>)}
+				{!loading && !error && songs.length < 1 && (<p className="error">{"You haven't any songs yet..."}</p>)}
 
 				{currentTrack && <MusicPlayer />}
 			</div>

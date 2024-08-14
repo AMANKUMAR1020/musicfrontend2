@@ -19,7 +19,7 @@ export default function SongUpload() {
   const [progresspercentimg, setProgresspercentimg] = useState(0);
   const [progresspercentsong, setProgresspercentsong] = useState(0);
 
-  const { user, token } = useSelector((state) => state.user);
+  const { token } = useSelector((state) => state.user);
   const navigate = useNavigate();
 
   const handleSubmitImg = (e) => {

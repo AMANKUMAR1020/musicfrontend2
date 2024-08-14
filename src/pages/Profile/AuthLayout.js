@@ -21,7 +21,6 @@ const AuthLayout = () => {
 	return (
 		<main>
             <Outlet />
-			{/* {currentTrack && <MusicPlayer />} */}
 		</main>
 	);
 };

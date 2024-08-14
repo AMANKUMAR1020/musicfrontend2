@@ -1,4 +1,3 @@
-//import { Button, Flex, Hide } from "@chakra-ui/react";
 import { AiFillPauseCircle, AiFillPlayCircle } from "react-icons/ai";
 import {
 	TbArrowsShuffle,
@@ -25,21 +24,21 @@ const PlayControls = ({
 
 	return (
 		<div class="track-button">
-			<button className="btn-type6" ><TbArrowsShuffle /></button>
+			<button className="music_bnt" ><TbArrowsShuffle size={20}/></button>
 
-			<button className="btn-type6" onClick={onPrevious}> <TbPlayerTrackPrevFilled/></button>
+			<button className="music_bnt" onClick={onPrevious}> <TbPlayerTrackPrevFilled size={20}/></button>
 			
-			<button className="btn-type6" onClick={onPlay}> {!isPlaying ? <AiFillPlayCircle /> : <AiFillPauseCircle />}</button>
+			<button className="music_bnt" onClick={onPlay}> {!isPlaying ? <AiFillPlayCircle size={28}/> : <AiFillPauseCircle size={28}/>}</button>
 			
-			<button className="btn-type6" onClick={onNext}> <TbPlayerTrackNextFilled size={16} /></button>
+			<button className="music_bnt" onClick={onNext}> <TbPlayerTrackNextFilled size={20} /></button>
 			
-			<button className="btn-type6" onClick={() => dispatch(toggleRepeat())}>
+			<button className="music_bnt" onClick={() => dispatch(toggleRepeat())}>
 				{repeatStatus === "OFF" ? (
-						<TbRepeatOff color="inherit" size={18} />
+						<TbRepeatOff color="inherit" size={20} />
 					) : repeatStatus === "SINGLE" ? (
-						<TbRepeatOnce color="inherit" size={18} />
+						<TbRepeatOnce color="inherit" size={20} />
 					) : (
-						<TbRepeat color="inherit" size={18} />
+						<TbRepeat color="inherit" size={20} />
 					)}
 			</button>
 		</div>

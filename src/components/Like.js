@@ -1,9 +1,6 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useState } from "react";
 import { client } from "../api";
-import { CiHeart } from "react-icons/ci";
-import { FaHeart } from "react-icons/fa";
-//import '../pages/style/ArtisteSong.css'
 import '../pages/style/HomePage.css'
 
 import { BsFillPlayCircleFill } from "react-icons/bs";
@@ -18,7 +15,7 @@ const Like = ({ song, handlePlay, id }) => {
   const [errorMsg, setErrorMsg] = useState("");
   const { currentTrack, isPlaying } = useSelector((state) => state.player);
 
-  const { user, token } = useSelector((state) => state.user);
+  const { token } = useSelector((state) => state.user);
   const isCurrentTrack = currentTrack?._id === song?._id;
 
   const handleLike = async (id, e) => {
@@ -69,10 +66,6 @@ const Like = ({ song, handlePlay, id }) => {
       />
       <p className="text">{song?.title}</p>
       <p className="text">{song?.Artiste}</p>
-      {/* <p className="text" onClick={(e) => { handleLike(user._id, e) }}>
-        {cheacking(user._id) ? <FaHeart /> : <CiHeart />}
-      </p> */}
-
       
   {isCurrentTrack && isPlaying ? (
     <p className="text">

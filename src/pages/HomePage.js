@@ -2,7 +2,7 @@ import { useNavigate,Outlet } from "react-router-dom";
 import { logoutUser } from "../redux/slices/userSlice";
 import { useDispatch } from "react-redux";
 import { resetPlayer } from "../redux/slices/playerSlice";
-import '../pages/style/HomePage.css'
+import "./style/HomePage.css"
 import Footer from "./Footer";
 import MyNavbar from "./MyNavbar";
 import useTitle from "./useTitle";
