@@ -49,6 +49,7 @@ const LoginPage = () => {
 					navigate('/dash')
 				})
 				.catch((err) => {
+					console.log(err)
 					setError(err?.response?.data?.message);
 				});
 				setLoading(false);
@@ -63,7 +64,6 @@ const LoginPage = () => {
 	return (
 	<>
 	<MyNavbar/>
-
 	<h1 className="headline1">Login</h1>
 	<div className="formparant">
 		<form className="form">

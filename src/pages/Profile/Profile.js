@@ -254,10 +254,10 @@ export default function Profile() {
 
               {data?.userPlaylist?.length < 1 && <p className='text'>You have not created any playlists</p>}
               {error && (<p className='error'>Sorry, an error occurred</p>)}
-              <div>
               <div style={{alignContent:'left'}} className='place'>
                 <button className='btn-type3' onClick={() => { navigate('/createplaylist') }}><MdOutlineCreateNewFolder/></button>
               </div>
+              <div style={{display:'flex'}}>
 
               {data?.userPlaylist?.map((playlist) => (
                 <div key={playlist?._id}>

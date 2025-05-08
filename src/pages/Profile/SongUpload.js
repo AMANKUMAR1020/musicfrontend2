@@ -141,8 +141,6 @@ export default function SongUpload() {
 
         <div className="songupload">
 
-            {error && errorMsg && <p className="error">{errorMsg}</p>}
-            {successMsg && <p className="success">{successMsg}</p>}
 
             <h2 className="headline2">Song title</h2>
             <input
@@ -183,6 +181,9 @@ export default function SongUpload() {
             <div style={{ textAlign:'center', display:'flex', fontSize:'20px'}}>{progresspercentsong}%</div>
             }
 
+            {error && errorMsg && <p className="error">{errorMsg}</p>}
+            {successMsg && <p className="success">{successMsg}</p>}
+
             <div className="container-dashboard-button">
                 <button className="container-dashboard-button-type" onClick={()=>{navigate(-1)}}>Back</button>
                   {loading ? <p style={{ textAlign: 'center' }}><AiOutlineLoading className="AiOutlineLoading" size={36} /></p>
@@ -191,6 +192,7 @@ export default function SongUpload() {
                 }
             </div>
         </div>
+
 
       <Outlet />
       <Footer/>

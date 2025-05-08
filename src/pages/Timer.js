@@ -3,30 +3,34 @@ import './style/HomePage.css'
 
 export default function Timer() {
     const [min, setMin] = useState(1);
-    const [sec, setSec] = useState(59);
+    const [sec, setSec] = useState(60);
 
     useEffect(() => {
         const interval = setInterval(() => {
-            if (min === 0 && sec === 0) {
-                clearInterval(interval);
-            } else if (sec === 0) {
-                setMin(min => min - 1);
-                setSec(59);
-            } else {
-                setSec(sec => sec - 1);
-            }
+            setSec(prevSec => {
+                if (prevSec === 0) {
+                    setMin(prevMin => {
+                        if (prevMin === 0) {
+                            clearInterval(interval);
+                            return 0;
+                        }
+                        return prevMin - 1;
+                    });
+                    return 59; // reset seconds to 59 when decreasing minute
+                } else {
+                    return prevSec - 1;
+                }
+            });
         }, 1000);
 
-        return () => {
-            clearInterval(interval);
-        };
+        return () => clearInterval(interval);
     }, []);
 
     return (
-        <>
+        <div>
             <p className="text">Please wait for ONLY 2 MINUTES,<br/>
             application is loading on the server. It will start in<br/>
-            &nbsp;&nbsp;{min}&nbsp;:{sec < 10 ? `0${sec}` : sec}&nbsp;&nbsp;</p>
-        </>
+            {min}:{sec.toString().padStart(2, '0')}</p>
+        </div>
     );
 }

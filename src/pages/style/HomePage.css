@@ -643,7 +643,7 @@ img {
   display: flex;
   padding: 20px;
   margin: 20px;
-  width: auto;
+  width: fit-content;
   background-color: rgb(129 120 120 / 26%);
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -854,6 +854,9 @@ textarea:hover{
 /* Container */
 .Container {
   text-align: center;
+  padding: 20px;
+  min-height: 18rem;
+  max-height: fit-content;
   padding: 20px;
   margin-bottom: 20px;
   /* background-color: #f2f2f2; */
@@ -1163,44 +1166,57 @@ border-radius: 12px;
 }
 
 .fav-container-page{
-  border: none;
-  border-radius: 12px;
-  /* background: rgb(98, 237, 201); */
-  background: radial-gradient(circle, rgba(127, 219, 194, 0.768) 19%, rgba(70, 109, 182, 0.944) 75%);
-  display: flex;
-  padding: 7px;
-  margin: 7px;
-  /* text-align: center; */
+
+  text-align: center;
+  padding: 20px;
+  min-height: 18rem;
+  max-height: -moz-fit-content;
+  max-height: fit-content;
+  padding: 20px;
+  margin-bottom: 20px;
+  /* background-color: #f2f2f2; */
+  border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  flex-direction: column;
-  align-items: center;
+  background: rgb(131, 58, 180);
+  background: radial-gradient(circle, rgba(127, 219, 194, 0.768) 19%, rgba(70, 109, 182, 0.944) 75%);
 }
 
 .playlist-container-page-other-user {
-  border: none;
-  border-radius: 12px;
-  background: rgb(98, 237, 201);
-  background: radial-gradient(circle, rgba(98, 237, 201, 0.7679446778711485) 19%, rgba(91, 246, 129, 0.9444152661064426) 75%);
+
   display: flex;
-  padding: 7px;
-  margin: 7px;
   text-align: center;
+  flex-direction: column;
+  padding: 20px;
+  min-height: 18rem;
+  max-height: -moz-fit-content;
+  max-height: fit-content;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: rgb(131, 58, 180);
+  background: radial-gradient(circle, rgba(98, 237, 201, 0.7679446778711485) 19%, rgba(91, 246, 129, 0.9444152661064426) 75%);
+
 }
 
 .playlist-container-page {
-  border: none;
-  border-radius: 12px;
-  /* background: rgb(98, 237, 201); */
-  background: radial-gradient(circle, rgba(98, 237, 201, 0.7679446778711485) 19%, rgba(91, 246, 129, 0.9444152661064426) 75%);
+
+
   display: flex;
-  padding: 7px;
-  margin: 7px;
   text-align: center;
-  justify-content: space-between;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   flex-direction: column;
-  align-items: center;
+  padding: 20px;
+  min-height: 18rem;
+  max-height: -moz-fit-content;
+  max-height: fit-content;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: rgb(131, 58, 180);
+  background: radial-gradient(circle, rgba(98, 237, 201, 0.7679446778711485) 19%, rgba(91, 246, 129, 0.9444152661064426) 75%);
+
+
 }
 
 .flex-card-playlist {

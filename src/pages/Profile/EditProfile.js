@@ -140,7 +140,7 @@ function EditProfile() {
 
         {
         updatedImage ? 
-        <img src={updatedImage} alt={updatedImage} height={80} weight={80} />
+        <img style={{display:'flex', justifyContent:"left"}} src={updatedImage} alt={updatedImage} height={80} weight={80} />
         :  
         <div style={{ textAlign:'center', display:'flex', fontSize:'20px'}}>{progresspercentimg}%</div>
         }
@@ -151,7 +151,7 @@ function EditProfile() {
         <button className="container-dashboard-button-type" onClick={handleSubmit}>Update</button>
       </div>
   
-      {loading && <p><AiOutlineLoading className="AiOutlineLoading" size={36}/></p>}
+      {loading}
 
     <Outlet/>
     <Footer/>

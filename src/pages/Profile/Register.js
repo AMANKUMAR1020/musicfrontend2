@@ -55,17 +55,7 @@ const RegisterPage = () => {
 
 
   if(loading){
-    return (<>      	{/* <ClipLoader
-        color='yellow'
-        loading={loading}
-        cssOverride={{
-          display: "block",
-          margin: "0 auto",
-          borderColor: "yellow",
-          }}
-        size={100}
-        aria-label="Loading Spinner"
-        data-testid="loader"/> */}
+    return (<>
         <Timer/>
     </>)
   }
@@ -75,12 +65,10 @@ const RegisterPage = () => {
   return (
     <>
     <MyNavbar/>
-
     <h1 className="headline1">RegisterPage</h1>
 	<div className="formparant">
-    { loading ?
-     <p><AiOutlineLoading className="AiOutlineLoading" size={36} /></p> 
-     : 
+    
+    { loading  || 
       <form className="form">
           <div className="div">
             <label htmlFor="username" className="label">Username</label>
@@ -92,7 +80,10 @@ const RegisterPage = () => {
 
           <div className="div">
             <label htmlFor="password" className="label">Password</label>
-            <input type="password" placeholder="Enter Password here..." name="password" className="input"
+            <input 
+            type="password" 
+            placeholder="Enter Password here..." 
+            name="password" className="input"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             />

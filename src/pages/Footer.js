@@ -39,7 +39,7 @@ export default function Footer(){
     <p 
       className="text"
       style={{border: "none", padding:"10px", margin:"6px", borderRadius: "12px", backgroundColor: "rgb(238, 174, 202)"}}>
-        © Copyright&nbsp;{ year }&nbsp; by amankumar1020
+        Thank you visiting this website by amankumar1020 &nbsp;{ year }&nbsp;
     </p>
     </>)
   }
